@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of America  - Demo</title>
+    <style>
+        /* Reset and Basic Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            padding: 2rem 0; /* Top and bottom padding */
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.1mm;
+            background-color: #ec3333;
+            color: rgb(253, 253, 253);
+            margin-bottom: 0; /* Space below the header */
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo h1 {
+            margin-left: 0.5rem;
+        }
+
+        .user-settings {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: rgb(255, 255, 255); /* Same color as user's name */
+        }
+
+        .user-settings a {
+            color: white;
+            text-decoration: none;
+            margin: 0.5rem;
+        }
+
+        .user-settings a:hover {
+            text-decoration: underline;
+        }
+
+        .search {
+            margin-left: 9px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background-color: #c5c5c56c;
+            padding: 3px;
+            justify-content: center;
+        }
+
+        .nav-tabs a {
+            color: rgb(3, 3, 3);
+            text-decoration: none;
+            margin: 3px;
+            padding: 9px;
+            font-size: 18px;
+        }
+
+        .nav-tabs a:hover {
+            background-color: #ffffff8a;
+        }
+
+        /* Container for main content to add side padding */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem; /* Side padding for spacious look */
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            padding: 2rem 0;
+            gap: 0.9rem;
+        }
+
+        /* Account Overview */
+        .account-overview {
+            width: 70%;
+        }
+
+        .account-overview-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .account-overview h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            display: inline;
+        }
+
+        .user-name-links a {
+            color: #101cc9; /* Updated color */
+            font-size: 0.89rem; /* Updated font size */
+            text-decoration: none;
+            margin-left: 0.5rem;
+        }
+
+        .user-name-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Account Summary Text Positioned Above Border */
+        .personal-accounts {
+            position: relative;
+            margin-top: 3rem;
+            padding: 1rem;
+            background-color: rgba(185, 77, 77, 0.089);
+            border: 2px solid #2f39c42a;
+            border-top: 6px solid blue;
+        }
+
+        .investment-accounts {
+            margin-top: 6rem;
+            padding: 1rem;
+            background-color: rgba(185, 77, 77, 0.089);
+            border: 2px solid #2f39c42a;
+            border-top: 6px solid blue; /* Add this line */
+            position: relative;
+        }
+
+        .account-summary {
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .account-summary img {
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .account-summary h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .blueborder-Transactions {
+            position: absolute;
+            top: -30px;
+            left: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .account {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 0.3mm solid rgba(185, 77, 77, 0.089);
+        }
+
+        .balance {
+            font-weight: bold;
+        }
+
+        .investment-accounts .promo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #333;
+        }
+
+        .investment-accounts .promo a {
+            color: #2286f0e8;
+        }
+
+        /* Activity Center */
+        .activity-center {
+            width: 36%; height: 30%;
+            background-color: #7e5b5b2c;
+            padding: 0.6rem;
+            border: 1px solid #ffffff;
+        }
+
+        .activity-center h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Grid layout with 3 columns and 2 rows */
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        /* Uniform activity box styling */
+        .activity {
+            background-color: white;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer .links a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        .footer .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Container to Center Content with Padding -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <img src="C:\Users\qd6_9bp\Desktop\bofa for images\images\redamerica (13600).png" alt="BOA" style="height: 90px;">
+                <h1></h1>
+            </div>
+            <div class="user-settings">
+                <h3>Roberta Rose Hensley</h3> 
+                <a href="#">| Profile & Settings</a> |
+                <a href="#">Saved Items</a> |
+                <a href="#">Log Out</a>
+                <span class="search">Search 🔍</span>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <a href="#">Accounts</a>
+            <a href="#">Bill Pay</a>
+            <a href="#">Transfer Zelle®</a>
+            <a href="#">Rewards & Deals</a>
+            <a href="#">Tools & Investing</a>
+            <a href="#">Security Center</a>
+            <a href="#">Open an Account</a>
+            <a href="#">Help & Support</a>
+        </nav>
+
+        <!-- Main Content Section -->
+        <main class="main-content">
+            <!-- Account Overview -->
+            <section class="account-overview">
+                <div class="account-overview-header">
+                    <h2>Hello, Joseph </h2>
+                    <div class="user-name-links">
+                        <a href="#">Update Profile</a> | <a href="#">Security Center</a>
+                    </div>
+                </div>
+
+                <!-- Personal Accounts -->
+                <div class="personal-accounts">
+                    <div class="account-summary">
+                        <img src="C:\Users\qd6_9bp\Pictures\Camera Roll\downlofffffggd.png" alt="Account Summary Logo" style="width: 40px; height: 20px;">
+                        <h3>Personal Accounts</h3>
+                    </div>
+
+                    <div class="account">
+                        <h>Regular Checking - 1276</h>
+                        <span class="balance">$145.02</span>
+                    </div>
+                    <div class="account">
+                        <span>Advantage Savings - 2362</span>
+                        <span class="balance">$8,141.51</span>
+                    </div>
+                    <div class="account">
+                        <span>Unlimited Cash Rewards Visa Signature - 2836</span>
+                        <span class="balance">$496.31</span>
+                    </div>
+                </div>
+
+                <!-- Investment Accounts -->
+                <div class="investment-accounts">
+                    <h3>Refund Credited</h3>
+                    <div class="blueborder-Transactions">Recent Transactions</div> <!-- Title added here -->
+                    <div class="account">
+                        <span>Refund credited $5000 - Ingoing process</span>
+                        <span class="balance">$8,141.51</span>
+                    </div>
+                    <div class="account">
+                        <span>Transfer to Checking - $1,200</span>
+                        <span class="balance">$8,141.51</span>
+                    </div>
+                    <div class="account">
+                        <span>ATM Withdrawal - $200</span>
+                        <span class="balance">$8,141.51</span>
+                    </div>
+                    <div class="account">
+                        <span>Deposit - $3,000</span>
+                        <span class="balance">$8,141.51</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Center -->
+            <aside class="activity-center">
+                <h3>Activity Center</h1>
+                <div class="activity-grid">
+                       
+                </div>
+
+                <!-- Activity Center Image -->
+                <div style="right: 1px; text-align: center;">
+                    <img src="C:\Users\qd6_9bp\Desktop\bofa for images\images\chopper.png" alt="Activity Center Example" style="width: 100%; max-width: 500px; border: 1px solid #ddd;">
+                    <img src="C:\Users\qd6_9bp\Pictures\Camera Roll\upper_tag_lynch.png" alt="Merill Investment" style="width: 100%; height: 50px;">
+                    <img src="C:\Users\qd6_9bp\Pictures\Camera Roll\Merrill-Lynch-Logo.png" alt="Merill Image" style="width: 100%; height: 150px;">
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="links">
+                <a href="#">Schedule an Appointment</a> |
+                <a href="#">Find Us</a> |
+                <a href="#">View Your FICO® Score</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
